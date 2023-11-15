@@ -1,0 +1,100 @@
+<div class="row">
+
+    <!--=== Le titre de la page ====-->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+        <div class="display-6 titre-page">Search flights</div>
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-end p-0">
+        <img src="../../assets/images/photo_varsovie_01.png" 
+                alt="photo_varsovie_01" title="photo_varsovie_01"
+                style="width:100%; height: 100%;"
+                class="image-centre" />
+    </div>
+</div>
+
+<div class="row zone-selections mt-4 pt-2 pb-4">
+
+    <!--=== La zone du datepicker ===-->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-center">
+
+        <!-- Le datepicker -->
+        <mat-form-field color="accent" class="large300px ng-datepicker">
+            <mat-label>Choose a date</mat-label>
+
+            <input matInput [matDatepicker]="picker01"
+                (dateInput)="onDatepickerEvent('input', $event)"
+                (dateChange)="onDatepickerEvent('change', $event)">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker01">
+                </mat-datepicker-toggle>  <!-- L'icone -->
+            <mat-datepicker #picker01 ></mat-datepicker>  <!-- Le popup -->
+        </mat-form-field>
+    </div>
+
+    <!--=== L'espace du combobox ===-->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-choix-pays gauche0px">
+
+        <div class="large300px text-center">Choose a country</div><br/>
+        
+        <!-- Le combobox -->
+        <form class="large300px" (change)="onFlightsCategorySelectionChange($event.target)">
+            <select id="paysVols" class="form-select choix-pays">
+                <option>PL</option>
+                <option>PL_Demo</option>
+                <option>DE_Demo</option>
+                <option>DE</option>
+                <option>FR</option>
+            </select>
+        </form>
+    </div>
+
+    <!--=== La zone d'affichage des valeurs choisies ===-->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 mt-4 d-flex justify-content-center">
+
+        <table>
+            <tr>
+                <td class="clef-selection">Selected Date :</td>
+                <td class="valeur-selection">{{ date_yyyy_mm_dd }}</td>
+            </tr>
+            <tr>
+                <td class="clef-selection">Selected Category :</td>
+                <td class="valeur-selection">{{ code_pays }}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 mt-4 gauche0px">
+        <button class="btn btn-primary large300px text-center"
+            (click)="afficherVols()">Display flights</button>
+    </div>
+</div>
+
+<div class="row mt-4 table-vols">
+
+    <h3 class="text-center">AVAILABLE FLIGHTS</h3>
+    
+    <!-- Lecture en boucle avec ngFor -->
+    <table class="table table-striped table-bordered bg-light">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Direction</th>
+                <th>City</th>
+                <th>Flight Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vol of listeVols_dispo">
+                <td>{{vol.dateHeure}}</td>
+                <td>{{vol.sens}}</td>
+                <td>{{vol.ville}}</td>
+                <td>{{vol.numeroVol}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <i>{{ message_statut }}</i><br/>
+    <span class="text-danger"><i>{{ message_erreur }}</i></span>
+</div>

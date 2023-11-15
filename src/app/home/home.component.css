@@ -1,0 +1,77 @@
+
+.large200px {
+    width:200px;
+    border-radius: 5px;
+}
+
+
+.large300px {
+    width:300px;
+    border-radius: 5px;
+}
+
+
+.image-centre {
+    border: 1px solid orange;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+.titre-page {
+    color: rgb(255, 120, 0);    /* darkorange++ */
+    /* font-weight: bold; */
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+}
+
+
+.ng-datepicker {
+    background-color: rgb(220, 220, 220);
+    border: 1px solid grey;
+}
+
+
+.clef-selection {
+    width: 150px;    /* 150px c'est la moitié de 300 = la largeur du datepicker */
+    text-align: right;
+    border-bottom: 1px solid orange;
+}
+
+
+.valeur-selection {
+    width: 150px;    /* 150px c'est la moitié de 300 = la largeur du datepicker */
+    text-align: center;
+    border-bottom: 1px solid orange;
+}
+
+
+.zone-selections {
+    border-radius: 4px;
+}
+
+
+.gauche0px {
+    padding-left: 0px;
+}
+
+
+.zone-choix-pays {
+    border: 1px solid lightgrey;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgb(245, 245, 245);
+}
+
+
+.choix-pays {
+    border: 1px solid grey;
+    border-radius: 4px;
+    background-color: rgb(220, 220, 220);
+}
+
+
+.table-vols {
+    border-collapse: collapse;
+    padding-left: 12px;
+    padding-right: 0px;
+}

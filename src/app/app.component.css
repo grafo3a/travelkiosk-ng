@@ -1,0 +1,32 @@
+/* On maintient le pied-de-page en bas meme si la page est vide.
+-------------------------------------------------- */
+
+.conteneur-body {
+    padding: 0px;
+    background-color: rgb(235, 235, 235);    /* gris faible */
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+
+header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    background-color: rgb(180, 220, 255);    /* bleu faible */
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 160px;   /* hauteur du pied-de-page */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0px;
+    background-color: #f5d6e0;    /* paleVioletRed faible 90% */
+}

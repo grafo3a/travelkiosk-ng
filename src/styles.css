@@ -1,0 +1,13 @@
+/* On maintient le pied-de-page en bas meme si la page est vide.
+-------------------------------------------------- */
+
+html {
+    min-height: 100%;
+    background-color: white;
+}
+
+
+body {
+    padding: 40px;
+    background-color: white;
+}
