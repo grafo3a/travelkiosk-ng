@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class MenusService {
 
-  bgBleuFaible = "rgb(180, 220, 255)";    /* La couleur de l'element actif */
+  bgOrangeatre = "rgb(255, 180, 120)";    /* orangeatre */
   bgRougeatre = "#f5d6e0";    /* paleVioletRed 90%, la couleur par defaut */
 
 
@@ -35,6 +35,6 @@ export class MenusService {
     // On colore le nouvel element actif du menu
     this.resetMenuColors();
     const activeComponent = document.getElementById(newComponentId) as HTMLElement;
-    activeComponent.style.backgroundColor = this.bgBleuFaible;
+    activeComponent.style.backgroundColor = this.bgOrangeatre;
   }
 }
