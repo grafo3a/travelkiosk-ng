@@ -1,0 +1,46 @@
+[
+    {
+        "dateHeure":"2050-01-01 09:00",
+        "sens":"Departure",
+        "ville":"Berlin",
+        "codePays":"DE",
+        "compagnie":"AirJava",
+        "numeroVol":"JAV05",
+        "typeAvion":"Airbus330neo",
+        "terminal":"E01",
+        "statut":"Confirmed"
+    },
+    {
+        "dateHeure":"2050-01-01 22:00",
+        "sens":"Departure",
+        "ville":"Frankfurt-AM",
+        "codePays":"DE",
+        "compagnie":"AirJava",
+        "numeroVol":"JAV13",
+        "typeAvion":"Airbus330neo",
+        "terminal":"E14",
+        "statut":"Confirmed"
+    },
+    {
+        "dateHeure":"2050-01-01 15:30",
+        "sens":"Arrival",
+        "ville":"Frankfurt-AM",
+        "codePays":"DE",
+        "compagnie":"AirJava",
+        "numeroVol":"JAV14",
+        "typeAvion":"Airbus330neo",
+        "terminal":"E14",
+        "statut":"Confirmed"
+    },
+    {
+        "dateHeure":"2050-01-01 17:30",
+        "sens":"Arrival",
+        "ville":"Berlin",
+        "codePays":"DE",
+        "compagnie":"AirJava",
+        "numeroVol":"JAV06",
+        "typeAvion":"Airbus330neo",
+        "terminal":"E01",
+        "statut":"Confirmed"
+    }
+]
