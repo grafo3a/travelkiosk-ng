@@ -22,6 +22,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { NiceHeaderComponent } from './nice-header/nice-header.component';
 import { NiceFooterComponent } from './nice-footer/nice-footer.component';
 import { NiceMainContentComponent } from './nice-main-content/nice-main-content.component';
+import { PhotoCentreComponent } from './photo-centre/photo-centre.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { NiceMainContentComponent } from './nice-main-content/nice-main-content.
     NiceHeaderComponent,
     NiceFooterComponent,
     NiceMainContentComponent,
+    PhotoCentreComponent,
   ],
   
 

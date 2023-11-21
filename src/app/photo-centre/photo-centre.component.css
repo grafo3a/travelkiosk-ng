@@ -1,0 +1,5 @@
+.image-centre {
+    border: 1px solid orange;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
