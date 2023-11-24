@@ -23,6 +23,7 @@ import { NiceHeaderComponent } from './nice-header/nice-header.component';
 import { NiceFooterComponent } from './nice-footer/nice-footer.component';
 import { NiceMainContentComponent } from './nice-main-content/nice-main-content.component';
 import { PhotoCentreComponent } from './photo-centre/photo-centre.component';
+import { ReservationService } from "./services/reservation.service";
 
 
 @NgModule({
@@ -62,7 +63,11 @@ import { PhotoCentreComponent } from './photo-centre/photo-centre.component';
   ],
 
   providers: [
-    PrevisionMeteoChService    // injection du service importE plus haut.
+    // injection des services importés plus haut
+    /*
+    PrevisionMeteoChService,    
+    ReservationService
+    */
   ],
 
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@
         "ville":"Gdansk",
         "codePays":"PL",
         "compagnie":"AirJava",
-        "numeroVol":"JAV01",
+        "numeroVol":"DEM01",
         "typeAvion":"Airbus330neo",
         "terminal":"E12",
         "statut":"Confirmed"
@@ -16,7 +16,7 @@
         "ville":"Cracow",
         "codePays":"PL",
         "compagnie":"AirJava",
-        "numeroVol":"JAV03",
+        "numeroVol":"DEM03",
         "typeAvion":"Airbus330neo",
         "terminal":"E15",
         "statut":"Confirmed"
@@ -27,7 +27,7 @@
         "ville":"Gdansk",
         "codePays":"PL",
         "compagnie":"AirJava",
-        "numeroVol":"JAV02",
+        "numeroVol":"DEM02",
         "typeAvion":"Airbus330neo",
         "terminal":"E12",
         "statut":"Confirmed"
@@ -38,7 +38,7 @@
         "ville":"Cracow",
         "codePays":"PL",
         "compagnie":"AirJava",
-        "numeroVol":"JAV04",
+        "numeroVol":"DEM04",
         "typeAvion":"Airbus330neo",
         "terminal":"E14",
         "statut":"Confirmed"

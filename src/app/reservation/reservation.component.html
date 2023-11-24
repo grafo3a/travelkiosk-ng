@@ -1,2 +1,171 @@
-<p>reservation works!</p>
-<p class="bg-warning">This component is under construction</p>
+<div class="row">
+
+    <!--=== Le titre de la page ====-->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+        <div class="h2 titre-page">Reserve a flight</div>
+    </div>
+    
+    <!--=== L'image du centre ===-->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-end p-0">
+        <app-photo-centre></app-photo-centre>
+    </div>
+</div>
+
+
+<div class="row zone-selections mt-4 pt-2 pb-4">
+
+    <!--=== La zone du datepicker ===-->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-center">
+
+        <!-- Le datepicker -->
+        <mat-form-field color="accent" class="large300px ng-datepicker">
+            <mat-label>Choose a date</mat-label>
+
+            <input matInput [matDatepicker]="picker01"
+                (dateInput)="onDatepickerEvent('input', $event)"
+                (dateChange)="onDatepickerEvent('change', $event)">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker01">
+                </mat-datepicker-toggle>  <!-- L'icone -->
+            <mat-datepicker #picker01 ></mat-datepicker>  <!-- Le popup -->
+        </mat-form-field>
+    </div>
+
+    <!--=== L'espace de l'input box ===-->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-choix-numero-vol gauche0px">
+
+        <div class="large300px text-center">Type a Flight Number</div><br/>
+        
+        <!-- Input box pour le numero de vol fourni -->
+        <input type="text" class="form-control-sm border border-secondary large300px"
+                id="inputNumeroVol" placeholder="Flight number"
+                (change)="onFlightNumberChange($event.target)" />
+    </div>
+
+    <!--=== La zone d'affichage des valeurs choisies ===-->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 mt-4 d-flex justify-content-center">
+
+        <table>
+            <tr>
+                <td class="clef-selection">Selected Date :</td>
+                <td class="valeur-selection">{{ date_yyyy_mm_dd }}</td>
+            </tr>
+            <tr>
+                <td class="clef-selection">Flight Number :</td>
+                <td class="valeur-selection">{{ numeroVol }}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 mt-4 gauche0px">
+        <button class="btn btn-primary large300px text-center"
+            (click)="afficher1Vol()">Display details</button>
+    </div>
+
+    <!--=== Message de statut & message d'erreur ===-->
+    <div class="row">
+        <!-- Une zone vide -->
+        <div class="col-xs-0 col-sm-0 col-md-6 col-lg-6"></div>
+        
+        <div class="col-xs-0 col-sm-0 col-md-6 col-lg-6">
+            <i>{{ message_statut }}</i><br/>
+            <span class="text-danger"><i>{{ message_erreur_details }}</i></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-4 table-details-vol p-0">
+
+    <h3 class="text-center">DETAILS OF THE FLIGHT</h3>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <table class="table table-sm table-striped table-bordered-sm bg-light">
+                    <tbody>
+                        <tr>
+                            <td><i>Moment</i></td>
+                            <td>{{ objetVol?.dateHeure }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><i>Direction</i></td>
+                            <td>{{ objetVol?.sens }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><i>City</i></td>
+                            <td>{{ objetVol?.ville }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><i>Country</i></td>
+                            <td>{{ objetVol?.codePays }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><i>Company</i></td>
+                            <td>{{ objetVol?.compagnie }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><i>Flight number</i></td>
+                            <td>{{ objetVol?.numeroVol }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><i>Airplane</i></td>
+                            <td>{{ objetVol?.typeAvion }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><i>Terminal</i></td>
+                            <td>{{ objetVol?.terminal }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><i>Status</i></td>
+                            <td>{{ objetVol?.statut }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><i>Fare</i></td>
+                            <td>{{ fareCost }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 p-0">
+
+                <form>
+                    <div class="zone-reservation">
+
+                        <div class="large300px text-center">YOUR RESERVATION</div><br/>
+
+                        <input type="text" 
+                                class="form-control form-control-sm border border-secondary large300px mb-2"
+                                placeholder="Names"
+                                (change)="onPaxNamesChange($event.target)" />
+                        <input type="text"
+                                class="form-control form-control-sm border border-secondary large300px mb-2"
+                                placeholder="Surname"
+                                (change)="onPaxSurnameChange($event.target)" />
+                    </div>
+
+                    <button type="submit" class="btn btn-orangeatre large300px mt-4"
+                    (click)="confirmerReservation()">Confirm reservation</button>
+
+                    <div class="mt-2">
+                        <span class="text-danger">{{ message_erreur_reservation }}</span>
+                        <span class="text-success">{{ message_succes_reservation }}</span>
+                        <br/>
+                        <span class="text-success h5">{{ newReservationNumber }}</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

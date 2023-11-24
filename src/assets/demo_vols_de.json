@@ -5,7 +5,7 @@
         "ville":"Berlin",
         "codePays":"DE",
         "compagnie":"AirJava",
-        "numeroVol":"JAV05",
+        "numeroVol":"DEM05",
         "typeAvion":"Airbus330neo",
         "terminal":"E01",
         "statut":"Confirmed"
@@ -16,7 +16,7 @@
         "ville":"Frankfurt-AM",
         "codePays":"DE",
         "compagnie":"AirJava",
-        "numeroVol":"JAV13",
+        "numeroVol":"DEM13",
         "typeAvion":"Airbus330neo",
         "terminal":"E14",
         "statut":"Confirmed"
@@ -27,7 +27,7 @@
         "ville":"Frankfurt-AM",
         "codePays":"DE",
         "compagnie":"AirJava",
-        "numeroVol":"JAV14",
+        "numeroVol":"DEM14",
         "typeAvion":"Airbus330neo",
         "terminal":"E14",
         "statut":"Confirmed"
@@ -38,7 +38,7 @@
         "ville":"Berlin",
         "codePays":"DE",
         "compagnie":"AirJava",
-        "numeroVol":"JAV06",
+        "numeroVol":"DEM06",
         "typeAvion":"Airbus330neo",
         "terminal":"E01",
         "statut":"Confirmed"
