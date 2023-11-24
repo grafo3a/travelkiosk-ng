@@ -24,6 +24,7 @@ import { NiceFooterComponent } from './nice-footer/nice-footer.component';
 import { NiceMainContentComponent } from './nice-main-content/nice-main-content.component';
 import { PhotoCentreComponent } from './photo-centre/photo-centre.component';
 import { ReservationService } from "./services/reservation.service";
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ReservationService } from "./services/reservation.service";
     NiceFooterComponent,
     NiceMainContentComponent,
     PhotoCentreComponent,
+    PaymentComponent,
   ],
   
 
