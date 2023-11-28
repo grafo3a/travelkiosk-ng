@@ -10,7 +10,7 @@ export class ReservationService {
   // Un tableau de IReservation (vide)
   static listeReservations: ReservationModel[] = [];
 
-
+  
   constructor() {}
 
 
@@ -18,10 +18,10 @@ export class ReservationService {
     this.listeReservations.push(objetReservation);
   }
 
+  /** Recherche d'un objet reservation sur base d'un numero de reservation fourni */
+  public static getReservationFromList(numeroReservationFourni: string): ReservationModel {
 
-  public static getReservationFromList(numeroReservationFourni: string): any {
-
-    let bonneReservation: ReservationModel | undefined;
+    let bonneReservation: ReservationModel = new ReservationModel;
 
     for (const elementListe of this.listeReservations) {
 

@@ -35,6 +35,8 @@ export class ReservationComponent {
   fareCost = "";
   newReservationNumber = "";
   isTicketPaid = false;
+  prefixeTicket = "TICKET_PAX_";
+  
   
   constructor(
     // On cree une instance pour chaque service qu'on va utiliser
@@ -89,7 +91,7 @@ export class ReservationComponent {
     this.resetFlightDetailsDisplay();
   }
 
-
+  
   afficher1Vol() {
     // Un tableau d'objets JSon est attendu
 
@@ -178,19 +180,20 @@ export class ReservationComponent {
     } else {
 
       const nombreReservationsDispo = ReservationService.getNombreToutesReservations();
-      const nouveauNumeroReservation = "pax_2023_" + (nombreReservationsDispo + 1);
+      const nouveauNumeroReservation = this.prefixeTicket + (nombreReservationsDispo + 1);
 
       let newReservationObject = new ReservationModel();
 
       newReservationObject.dateVol = this.objetVol.dateHeure;
       newReservationObject.numeroReservation = nouveauNumeroReservation;
-      newReservationObject.numeroVol = this.objetVol.numeroVol;
+      newReservationObject.flightNumber = this.objetVol.numeroVol;
       newReservationObject.paxName = this.paxName;
       newReservationObject.paxSurname = this.paxSurname;
       newReservationObject.fare = this.fareCost;
       newReservationObject.isTicketPaid = this.isTicketPaid;
 
       ReservationService.ajouterReservation(newReservationObject);
+      
       this.message_succes_reservation = "Success. Your reservation number is:";
       this.newReservationNumber = nouveauNumeroReservation;
     }

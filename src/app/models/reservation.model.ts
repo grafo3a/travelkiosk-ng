@@ -1,10 +1,15 @@
 export class ReservationModel {
 
     numeroReservation = "";
-    dateVol = "";
-    numeroVol = "";
     paxName = "";
     paxSurname = "";
+    dateVol = "";
+    direction = "";
+    city = "";
+    country = "";
+    flightNumber = "";
+    company = "";
     fare = "";
     isTicketPaid = false;
+    baggageAllowance = "";
 }
