@@ -44,84 +44,97 @@
 
 
 <!--=== Ligne 3 ===-->
-<div class="row mt-4 p-0 border border-warning">
+<!-- Messages d'erreur & messages de succes -->
+<div class="row">
+    
+    <!-- Une zone vide -->
+    <div class="col-xs-0 col-sm-0 col-md-6 col-lg-6"></div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <span class="text-danger"><i>{{ messageErreurNumeroVide }}</i></span>
+        <span class="text-danger"><i>{{ messageErreurRecherche }}</i></span>
+        <span class="text-success"><i>{{ messageSuccesRecherche }}</i></span>
+    </div>
+</div>
 
-    <!-- Zone 3A -->
+
+<!--=== Ligne 4 ===-->
+<div class="row mt-4 p-0 border border-warning">
+    
+    <!-- Zone 4A -->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-start border">
     
-    <!--================================-->
-    <table class="table table-sm table-striped table-bordered-sm bg-light">
-        <tbody>
-            <tr>
-                <td><i>Reservation number</i></td>
-                <td>{{ objetReservationAffichage?.numeroReservation }}</td>
-            </tr>
+        <table class="table table-sm table-striped table-bordered-sm bg-light">
+            <tbody>
+                <tr>
+                    <td><i>Reservation number</i></td>
+                    <td>{{ objetReservationAffichage?.numeroReservation }}</td>
+                </tr>
 
-            <tr>
-                <td><i>Name</i></td>
-                <td>{{ objetReservationAffichage?.paxName }}</td>
-            </tr>
+                <tr>
+                    <td><i>Name</i></td>
+                    <td>{{ objetReservationAffichage?.paxName }}</td>
+                </tr>
 
-            <tr>
-                <td><i>Surname</i></td>
-                <td>{{ objetReservationAffichage?.paxSurname }}</td>
-            </tr>
+                <tr>
+                    <td><i>Surname</i></td>
+                    <td>{{ objetReservationAffichage?.paxSurname }}</td>
+                </tr>
 
-            <tr>
-                <td><i>Moment</i></td>
-                <td>{{ objetReservationAffichage?.dateVol }}</td>
-            </tr>
+                <tr>
+                    <td><i>Moment</i></td>
+                    <td>{{ objetReservationAffichage?.dateVol }}</td>
+                </tr>
 
-            <tr>
-                <td><i>Flight number</i></td>
-                <td>{{ objetReservationAffichage?.flightNumber }}</td>
-            </tr>
-
-
-            <tr>
-                <td><i>Company</i></td>
-                <td>{{ objetReservationAffichage?.company }}</td>
-            </tr>
+                <tr>
+                    <td><i>Flight number</i></td>
+                    <td>{{ objetReservationAffichage?.flightNumber }}</td>
+                </tr>
 
 
-            <tr>
-                <td><i>Direction</i></td>
-                <td>{{ objetReservationAffichage?.direction }}</td>
-            </tr>
-
-            <tr>
-                <td><i>City</i></td>
-                <td>{{ objetReservationAffichage?.city }}</td>
-            </tr>
-
-            <tr>
-                <td><i>Country</i></td>
-                <td>{{ objetReservationAffichage?.country }}</td>
-            </tr>
-
-            <tr>
-                <td><i>Fare</i></td>
-                <td>{{ objetReservationAffichage?.fare }}</td>
-            </tr>
+                <tr>
+                    <td><i>Company</i></td>
+                    <td>{{ objetReservationAffichage?.company }}</td>
+                </tr>
 
 
-            <tr>
-                <td><i>Payment received</i></td>
-                <td>{{ objetReservationAffichage?.isTicketPaid }}</td>
-            </tr>
+                <tr>
+                    <td><i>Direction</i></td>
+                    <td>{{ objetReservationAffichage?.direction }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>City</i></td>
+                    <td>{{ objetReservationAffichage?.city }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Country</i></td>
+                    <td>{{ objetReservationAffichage?.country }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Fare</i></td>
+                    <td>{{ objetReservationAffichage?.fare }}</td>
+                </tr>
 
 
-            <tr>
-                <td><i>Status</i></td>
-                <td>{{ objetReservationAffichage?.baggageAllowance }}</td>
-            </tr>
-            
-        </tbody>
-    </table>
-<!--============================================-->
+                <tr>
+                    <td><i>Payment received</i></td>
+                    <td>{{ objetReservationAffichage?.isTicketPaid }}</td>
+                </tr>
+
+
+                <tr>
+                    <td><i>Status</i></td>
+                    <td>{{ objetReservationAffichage?.baggageAllowance }}</td>
+                </tr>
+                
+            </tbody>
+        </table>
     </div>
-
-    <!-- Zone 3B -->
+    
+    <!-- Zone 4B -->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 border zone-paiement">
 
         <div class="mb-0">
@@ -130,8 +143,8 @@
         </div>
 
         <div class="mt-2">
-            <span class="text-danger">{{ message_erreur_paiement }}</span>
-            <span class="text-success">{{ message_succes_paiement }}</span>
+            <span class="text-danger">{{ messageErreurPaiement }}</span>
+            <span class="text-success">{{ messageSuccesPaiement }}</span>
             <br/>
             <span class="text-success h5">{{ newTicketNumber }}</span>
         </div>
@@ -139,4 +152,5 @@
     </div>
 </div>
 
+<br/>
 <p class="bg-warning p-2">This component is under construction</p>

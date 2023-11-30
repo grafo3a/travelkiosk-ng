@@ -14,8 +14,11 @@ export class PaymentComponent {
 
   objetReservationAffichage: ReservationModel|undefined;
   numeroReservationFourni = "";
-  message_erreur_paiement = "";
-  message_succes_paiement = "";
+  messageErreurNumeroVide = "";
+  messageErreurPaiement = "";
+  messageSuccesPaiement = "";
+  messageErreurRecherche = "";
+  messageSuccesRecherche = "";
   newTicketNumber = "";
   prefixeTicket = "TICKET_PAX";
 
@@ -35,25 +38,37 @@ export class PaymentComponent {
 
 
   onReservationNumberChange(event: any){
+
     // Le numero de reservation a été sauvegardé en majuscules.
     this.numeroReservationFourni = event.value.toUpperCase();
+    this.resetReservationDetailsDisplay();
   }
   
   
   verifierStatutReservation(){
-    
-    let objetReservationPresent: ReservationModel =
-      ReservationService.getReservationFromList(this.numeroReservationFourni);
 
-    // Verif si l'objet est vide (ici numeroReservation sera en majuscules)
-    if (objetReservationPresent.numeroReservation == this.numeroReservationFourni) {
-      this.message_succes_paiement =
-        "Reservation trouvée : " + objetReservationPresent.numeroReservation;
-        this.objetReservationAffichage = objetReservationPresent;
+    if (this.numeroReservationFourni == "") {
+      // Si aucun numero de reservation fourni
+      this.messageErreurNumeroVide = "ERROR. No reservation number provided. type a reservation number.";
 
     } else {
-       this.message_erreur_paiement = "ERREUR. Reservation absente." +
-        objetReservationPresent.numeroReservation;
+      /* Si un numero de reservation est fourni.
+      Si reservation recherchée absente, on obtient un objet vide */
+      let objetReservationPresent: ReservationModel =
+        ReservationService.getReservationFromList(this.numeroReservationFourni);
+      
+      let numeroReservationPresent = objetReservationPresent.numeroReservation;
+
+      // Verif si l'objet est vide (ici numeroReservation sera en majuscules)
+      if (numeroReservationPresent == this.numeroReservationFourni) {
+
+        this.messageSuccesRecherche = "Reservation found : " + objetReservationPresent.numeroReservation;
+        this.objetReservationAffichage = objetReservationPresent;
+
+      } else {
+          this.messageErreurRecherche = "ERROR. No reservation found for " +
+            this.numeroReservationFourni;
+      }
     }
 
 
@@ -65,14 +80,19 @@ export class PaymentComponent {
     */
   }
 
-  
+
   effectuerPaiement(){
     // A FAIRE
   }
 
 
   resetReservationDetailsDisplay(){
-    // A FAIRE
+    this.messageErreurNumeroVide = "";
+    this.messageErreurPaiement = "";
+    this.messageErreurRecherche = "";
+    this.messageSuccesPaiement = "";
+    this.messageSuccesRecherche = "";
+    this.newTicketNumber = "";
+    this.objetReservationAffichage = undefined;
   }
-
 }
