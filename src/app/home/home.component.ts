@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   url = "";
   message_erreur = "";
   message_statut = "";
+  messageWarningDateVide = "";
   code_pays = "PL";
   code_demo_pl = "PL_Demo";
   code_demo_de = "DE_Demo";
@@ -70,12 +71,20 @@ export class HomeComponent implements OnInit {
 
     this.date_yyyy_mm_dd = year + "-" + month_string + "-" + day_string;
     this.resetFlightsListDisplay();
+
+    if (this.code_pays.endsWith("DEMO")) {
+      this.messageWarningDateVide = "Warning: all demo cases display flights with the same date: 2050-01-01.";      
+    }
   }
 
-
+  
   onFlightsCategorySelectionChange(event: any){
     this.resetFlightsListDisplay();
     this.code_pays = event.value.toUpperCase();    /* on affecte la nouvelle valeur choisie */
+
+    if (this.code_pays.endsWith("DEMO")) {
+      this.messageWarningDateVide = "Warning: all demo cases display flights with the same date: 2050-01-01.";      
+    }
   }
 
 
@@ -83,6 +92,7 @@ export class HomeComponent implements OnInit {
     //Reinitialisation de toutes les variables affichables
 
     this.listeVols_dispo = undefined;
+    this.messageWarningDateVide = "";
     this.message_erreur = "";
     this.message_statut = "";
     VolsService.error_message = "";
@@ -93,41 +103,47 @@ export class HomeComponent implements OnInit {
     // Cas de plusieurs objets JSon attendus
 
     this.resetFlightsListDisplay();
-    
-    let url_date = this.url_base_serveur + this.date_yyyy_mm_dd;
-    const codePaysVols = this.getFlightsCountry();
 
-    if (codePaysVols == this.code_demo_pl) {
-      url_date = this.url_demo_pl;
-
-    } else if (codePaysVols == this.code_demo_de) {
-      url_date = this.url_demo_de;
+    if (this.date_yyyy_mm_dd.toUpperCase() == "NONE") {
+      this.message_erreur = "ERROR: no date chosen. pick a date.";
 
     } else {
-      url_date = url_date + "/" + this.code_pays.toLowerCase();
-    }
-
-    this.message_statut = "STATUS: Waiting ...";
-
-    // On effectue la requete HTTP pour obtenir un tableau de IVol
-    this.serviceVols.getFlights(url_date).subscribe(
-      (data: IVol[]) => this.listeVols_dispo = data);
-
-    // Apres 3 secondes, on verifie les donnees (timeout version rxjs)
-    timer(3000).subscribe(
-      x => {
-        if (this.listeVols_dispo == undefined) {
-          
-          this.message_statut = "STATUS: No response received.";
-          this.message_erreur = VolsService.error_message;
-
-        } else {
-
-          const nombre_vols = this.listeVols_dispo.length;
-          this.message_statut = "STATUS: Success (" + nombre_vols + " flights found)";
-        }
+      
+      let url_date = this.url_base_serveur + this.date_yyyy_mm_dd;
+      const codePaysVols = this.getFlightsCountry();
+      
+      if (codePaysVols == this.code_demo_pl) {
+        url_date = this.url_demo_pl;
+      
+      } else if (codePaysVols == this.code_demo_de) {
+        url_date = this.url_demo_de;
+      
+      } else {
+        url_date = url_date + "/" + this.code_pays.toLowerCase();
       }
-    )
+      
+      this.message_statut = "STATUS: Waiting ...";
+      
+      // On effectue la requete HTTP pour obtenir un tableau de IVol
+      this.serviceVols.getFlights(url_date)
+        .subscribe((data: IVol[]) => this.listeVols_dispo = data);
+      
+      // Apres 3 secondes, on verifie les donnees (timeout version rxjs)
+      timer(3000).subscribe(x => {
+          
+          if (this.listeVols_dispo == undefined) {
+            
+            this.message_statut = "STATUS: No response received.";
+            this.message_erreur = VolsService.error_message;
+          
+          } else {
+            
+            const nombre_vols = this.listeVols_dispo.length;
+            this.message_statut = "STATUS: Success (" + nombre_vols + " flights found)";
+          }
+        }
+      )
+    }
   }
 
 

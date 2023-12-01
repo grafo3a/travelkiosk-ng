@@ -1,3 +1,4 @@
+<!--=== Ligne 1 ===-->
 <div class="row">
 
     <!--=== Le titre de la page ====-->
@@ -12,9 +13,10 @@
 </div>
 
 
-<div class="row zone-selections mt-4 pt-2 pb-4">
+<!--=== Ligne 2 ===-->
+<div class="row zone-selections mt-4 pt-2 pb-2">
 
-    <!--=== La zone du datepicker ===-->
+    <!--=== Zone 2A ===-->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-center">
 
         <!-- Le datepicker -->
@@ -32,7 +34,7 @@
         </mat-form-field>
     </div>
 
-    <!--=== L'espace du combobox ===-->
+    <!--=== Zone 2B (espace du combobox) ===-->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-choix-pays gauche0px">
 
         <div class="large300px text-center">Choose a country</div><br/>
@@ -49,7 +51,7 @@
         </form>
     </div>
 
-    <!--=== La zone d'affichage des valeurs choisies ===-->
+    <!--=== Zone 2C (zone d'affichage des valeurs choisies) ===-->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 mt-4 d-flex justify-content-center">
 
         <table>
@@ -63,14 +65,30 @@
             </tr>
         </table>
     </div>
-    
+
+    <!--=== Zone 2D ===-->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 mt-4 gauche0px">
         <button class="btn btn-primary large300px text-center"
             (click)="afficherVols()">Display flights</button>
     </div>
+
+    <!--=== Zone 2E Vide ===-->
+    <div class="col-xs-0 col-sm-0 col-md-10 col-lg-6"></div>
+
+    <!--=== Zone 2F (messages d'erreur & de statut) -->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 gauche0px">
+        
+        <!-- Affichage sur condition avec *ngIf -->
+        <div *ngIf="messageWarningDateVide != ''" class="text-orange large300px text-end">
+            <i>{{ messageWarningDateVide }}</i></div>
+            
+        <i>{{ message_statut }}</i><br/>
+        <span class="text-danger"><i>{{ message_erreur }}</i></span>
+    </div>
 </div>
 
 
+<!--=== Ligne 3 ===-->
 <div class="row mt-4 table-vols">
 
     <h3 class="text-center">AVAILABLE FLIGHTS</h3>
@@ -94,7 +112,4 @@
             </tr>
         </tbody>
     </table>
-
-    <i>{{ message_statut }}</i><br/>
-    <span class="text-danger"><i>{{ message_erreur }}</i></span>
 </div>
