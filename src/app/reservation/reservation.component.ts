@@ -24,7 +24,7 @@ export class ReservationComponent {
   url_demo_pl = "../../assets/demo_vols_pl.json";
   url_demo_de = "../../assets/demo_vols_de.json";
   messageErreurDetails = "";
-  messageErreurNumeroVide = "";
+  messageErreurInfoVide = "";
   messageStatut = "";
   message_erreur_reservation = "";
   message_succes_reservation = "";
@@ -80,7 +80,10 @@ export class ReservationComponent {
     }
 
     this.date_yyyy_mm_dd = year + "-" + month_string + "-" + day_string;
+    
+    this.resetInputZoneMessages();
     this.resetFlightDetailsDisplay();
+    this.resetPaxZoneMessages();
   }
 
 
@@ -93,14 +96,16 @@ export class ReservationComponent {
       this.numeroVol = event.value.toUpperCase();
     }
 
+    this.resetInputZoneMessages();
     this.resetFlightDetailsDisplay();
     this.resetPaxZoneMessages();
   }
 
 
   afficher1Vol() {
-    this.resetFlightDetailsDisplay();
+
     this.resetInputZoneMessages();
+    this.resetFlightDetailsDisplay();
     this.resetPaxZoneMessages();
 
     // Un tableau d'objets JSon est attendu
@@ -118,21 +123,19 @@ export class ReservationComponent {
       
       url_numeroVol = this.url_demo_de;
     }
+    
+    if (this.date_yyyy_mm_dd.toUpperCase() == "NONE") {
+      // Si date non choisie
+      this.messageErreurInfoVide = "ERROR: no date chosen. Pick a date.";
 
-    /* A FAIRE: VERIFS AVANT REQUETE */
-    if (this.date_yyyy_mm_dd == "NONE") {
-      // ERREUR: date non choisie
-
-    } else if (this.numeroVol.toUpperCase() == "NONE" ||
-                this.numeroVol == "") {
-      // ERREUR: numero-vol non fourni
-      this.messageErreurNumeroVide = "ERROR: no flight number provided. Type a flight number.";
+    } else if (this.numeroVol.toUpperCase() == "NONE" || this.numeroVol == "") {
+      // Si numero-vol non fourni
+      this.messageErreurInfoVide = "ERROR: no flight number provided. Type a flight number.";
 
     } else {
-      // On passe la requete
-      
+      // Si toutes les infos dispo, on passe la requete
       this.messageStatut = "STATUS: Waiting ...";
-
+      
       // On effectue la requete HTTP pour obtenir un tableau de IVol
       this.serviceVols.getFlights(url_numeroVol).subscribe(
         (data: IVol[]) => this.listeVols_dispo = data);
@@ -186,11 +189,20 @@ export class ReservationComponent {
     this.resetPaxZoneMessages();
 
     if (this.objetVol == undefined) {
-      
+      // Si aucun objet vol present
       this.message_erreur_reservation = "ERROR: No flight found." +
         "Choose a date, type a flight number & click the display details button above.";
-      
+    
+    } else if(this.paxName == ""){
+      // Si prenom du passager vide
+      this.message_erreur_reservation = "ERROR: No name provided. Type a name.";
+    
+    } else if(this.paxSurname == ""){
+      // Si nom du passager vide
+      this.message_erreur_reservation = "ERROR: No surname provided. Type a surname.";
+
     } else {
+      // Si toutes les infos dispo, on effectue la reservation
 
       const nombreReservationsDispo = ReservationService.getNombreToutesReservations();
       const nouveauNumeroReservation = this.prefixeTicket + (nombreReservationsDispo + 1);
@@ -210,8 +222,6 @@ export class ReservationComponent {
       this.message_succes_reservation = "Success. Your reservation number is:";
       this.newReservationNumber = nouveauNumeroReservation;
     }
-
-
   }
 
 
@@ -249,7 +259,7 @@ export class ReservationComponent {
 
     this.messageErreurDetails = "";
     this.messageStatut = "";
-    this.messageErreurNumeroVide = "";
+    this.messageErreurInfoVide = "";
   }
 
 

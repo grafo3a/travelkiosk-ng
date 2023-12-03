@@ -78,12 +78,16 @@
     <!--=== Zone 2F (messages d'erreur & de statut) -->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 gauche0px">
         
-        <!-- Affichage sur condition avec *ngIf -->
-        <div *ngIf="messageWarningDateVide != ''" class="text-orange large300px text-end">
-            <i>{{ messageWarningDateVide }}</i></div>
-            
-        <i>{{ message_statut }}</i><br/>
-        <span class="text-danger"><i>{{ message_erreur }}</i></span>
+        <!-- Affichage sur condition avec *ngIf,
+            pour la bonne organisation des messages sur la page -->
+        <div *ngIf="messageWarningCasDemo != ''" class="text-orange text-end">
+            <i>{{ messageWarningCasDemo }}</i></div>
+
+        <i>{{ message_statut }}</i>
+        
+        <div *ngIf="message_erreur != ''" class="text-danger">
+            <i>{{ message_erreur }}</i>
+        </div>
     </div>
 </div>
 

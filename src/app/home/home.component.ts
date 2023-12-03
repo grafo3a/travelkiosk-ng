@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   url = "";
   message_erreur = "";
   message_statut = "";
-  messageWarningDateVide = "";
+  messageWarningCasDemo = "";
   code_pays = "PL";
   code_demo_pl = "PL_Demo";
   code_demo_de = "DE_Demo";
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     this._locale = 'fr';
     this._adapter.setLocale(this._locale);
   }
-
+  
 
   onDatepickerEvent(type: string, event: MatDatepickerInputEvent<any>) {
 
@@ -72,9 +72,12 @@ export class HomeComponent implements OnInit {
     this.date_yyyy_mm_dd = year + "-" + month_string + "-" + day_string;
     this.resetFlightsListDisplay();
 
+    /*
     if (this.code_pays.endsWith("DEMO")) {
-      this.messageWarningDateVide = "Warning: all demo cases display flights with the same date: 2050-01-01.";      
+      this.messageWarningDateVide =
+        "Warning: all demo cases display flights with the same date: 2050-01-01.";      
     }
+    */
   }
 
   
@@ -83,16 +86,18 @@ export class HomeComponent implements OnInit {
     this.code_pays = event.value.toUpperCase();    /* on affecte la nouvelle valeur choisie */
 
     if (this.code_pays.endsWith("DEMO")) {
-      this.messageWarningDateVide = "Warning: all demo cases display flights with the same date: 2050-01-01.";      
+      this.messageWarningCasDemo = "Warning: all demo flights have the date 2050-01-01";      
+    
+    } else {
+      this.messageWarningCasDemo = "";
     }
   }
 
 
   resetFlightsListDisplay(){
     //Reinitialisation de toutes les variables affichables
-
+    
     this.listeVols_dispo = undefined;
-    this.messageWarningDateVide = "";
     this.message_erreur = "";
     this.message_statut = "";
     VolsService.error_message = "";
