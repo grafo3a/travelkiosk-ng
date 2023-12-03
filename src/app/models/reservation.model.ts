@@ -11,5 +11,5 @@ export class ReservationModel {
     company = "";
     fare = "";
     isTicketPaid = false;
-    baggageAllowance = "";
+    travelClass = "";
 }

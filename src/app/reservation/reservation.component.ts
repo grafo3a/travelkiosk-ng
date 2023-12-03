@@ -35,6 +35,7 @@ export class ReservationComponent {
   newReservationNumber = "";
   isTicketPaid = false;
   prefixeTicket = "TICKET_PAX_";
+  travelClass = "ECONOMY";
   
   
   constructor(
@@ -214,9 +215,15 @@ export class ReservationComponent {
       newReservationObject.flightNumber = this.objetVol.numeroVol;
       newReservationObject.paxName = this.paxName;
       newReservationObject.paxSurname = this.paxSurname;
+      newReservationObject.company = this.objetVol.compagnie;
+      newReservationObject.direction = this.objetVol.sens;
+      newReservationObject.city = this.objetVol.ville;
+      newReservationObject.country = this.objetVol.codePays;
       newReservationObject.fare = this.fareCost;
       newReservationObject.isTicketPaid = this.isTicketPaid;
+      newReservationObject.travelClass = this.travelClass;
 
+      
       ReservationService.ajouterReservation(newReservationObject);
       
       this.message_succes_reservation = "Success. Your reservation number is:";
