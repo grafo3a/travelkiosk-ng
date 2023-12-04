@@ -12,4 +12,5 @@ export class ReservationModel {
     fare = "";
     isTicketPaid = false;
     travelClass = "";
+    paxEmailAddress = "";
 }

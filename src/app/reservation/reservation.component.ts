@@ -31,6 +31,7 @@ export class ReservationComponent {
   numeroVol = "None";
   paxName = "";
   paxSurname = "";
+  paxEmailAddress = "";
   fareCost = "";
   newReservationNumber = "";
   isTicketPaid = false;
@@ -201,6 +202,10 @@ export class ReservationComponent {
     } else if(this.paxSurname == ""){
       // Si nom du passager vide
       this.message_erreur_reservation = "ERROR: No surname provided. Type a surname.";
+    
+    } else if(this.paxEmailAddress == ""){
+      // Si adresse courriel vide
+      this.message_erreur_reservation = "ERROR: No email address provided. Type an address.";
 
     } else {
       // Si toutes les infos dispo, on effectue la reservation
@@ -222,8 +227,8 @@ export class ReservationComponent {
       newReservationObject.fare = this.fareCost;
       newReservationObject.isTicketPaid = this.isTicketPaid;
       newReservationObject.travelClass = this.travelClass;
+      newReservationObject.paxEmailAddress = this.paxEmailAddress;
 
-      
       ReservationService.ajouterReservation(newReservationObject);
       
       this.message_succes_reservation = "Success. Your reservation number is:";
@@ -257,6 +262,14 @@ export class ReservationComponent {
   onPaxSurnameChange(event: any){
 
     this.paxSurname = event.value.toUpperCase();
+    this.resetInputZoneMessages();
+    this.resetPaxZoneMessages();
+  }
+
+
+  onPaxEmailAddressChange(event: any){
+
+    this.paxEmailAddress = event.value.toLowerCase();
     this.resetInputZoneMessages();
     this.resetPaxZoneMessages();
   }
