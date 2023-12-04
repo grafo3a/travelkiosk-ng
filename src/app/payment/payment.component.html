@@ -51,8 +51,8 @@
     <div class="col-xs-0 col-sm-0 col-md-6 col-lg-6"></div>
     
     <!-- La zone des messages -->
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <span class="text-danger"><i>{{ messageErreurNumeroVide }}</i></span>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-2 gauche0px">
+        <span class="text-danger"><i>{{ messageErreurNumeroReservationVide }}</i></span>
         <span class="text-danger"><i>{{ messageErreurRecherche }}</i></span>
         <span class="text-success"><i>{{ messageSuccesRecherche }}</i></span>
     </div>
@@ -60,10 +60,10 @@
 
 
 <!--=== Ligne 4 ===-->
-<div class="row mt-4 p-0 border border-warning">
+<div class="row mt-4 p-0">
     
     <!-- Zone 4A -->
-    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-start border">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-start">
     
         <table class="table table-sm table-striped table-bordered-sm bg-light">
             <tbody>
@@ -122,7 +122,14 @@
 
                 <tr>
                     <td><i>Payment received</i></td>
-                    <td>{{ objetReservationAffichage?.isTicketPaid }}</td>
+                    <td>
+                        <span class="text-danger" *ngIf="objetReservationAffichage?.isTicketPaid == false">
+                            {{ objetReservationAffichage?.isTicketPaid }}
+                        </span>
+                        <span class="text-success" *ngIf="objetReservationAffichage?.isTicketPaid == true">
+                            <b>{{ objetReservationAffichage?.isTicketPaid }}</b>
+                        </span>
+                    </td>
                 </tr>
 
 
@@ -136,22 +143,16 @@
     </div>
     
     <!-- Zone 4B -->
-    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 border zone-paiement">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-paiement">
 
         <div class="mb-0">
             <button class="btn large300px btn-orangeatre"
                     (click)="effectuerPaiement()">Pay now</button>
         </div>
 
-        <div class="mt-2">
+        <div class="mt-2"><i>
             <span class="text-danger">{{ messageErreurPaiement }}</span>
-            <span class="text-success">{{ messageSuccesPaiement }}</span>
-            <br/>
-            <span class="text-success h5">{{ newTicketNumber }}</span>
+            <span class="text-success">{{ messageSuccesPaiement }}</span></i>
         </div>
-
     </div>
 </div>
-
-<br/>
-<p class="bg-warning p-2">This component is under construction</p>

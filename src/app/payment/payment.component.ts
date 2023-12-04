@@ -3,7 +3,7 @@ import { VolsService } from '../services/vols.service';
 import { MenusService } from '../services/menus.service';
 import { ReservationModel } from '../models/reservation.model';
 import { ReservationService } from '../services/reservation.service';
-import { isEmpty } from 'rxjs';
+
 
 @Component({
   selector: 'app-payment',
@@ -14,12 +14,11 @@ export class PaymentComponent {
 
   objetReservationAffichage: ReservationModel|undefined;
   numeroReservationFourni = "";
-  messageErreurNumeroVide = "";
+  messageErreurNumeroReservationVide = "";
   messageErreurPaiement = "";
   messageSuccesPaiement = "";
   messageErreurRecherche = "";
   messageSuccesRecherche = "";
-  newTicketNumber = "";
   prefixeTicket = "TICKET_PAX";
 
 
@@ -32,8 +31,8 @@ export class PaymentComponent {
 
 
   ngOnInit(): void {
+    // On colore l'element actif du menu
     this.serviceMenus.updateActiveComponent("option021Payment");
-    //
   }
 
 
@@ -41,16 +40,21 @@ export class PaymentComponent {
 
     // Le numero de reservation a été sauvegardé en majuscules.
     this.numeroReservationFourni = event.value.toUpperCase();
+    this.resetErrorSuccesMessages();
     this.resetReservationDetailsDisplay();
   }
   
   
   verifierStatutReservation(){
 
+    this.resetErrorSuccesMessages();
+    this.resetReservationDetailsDisplay();
+
     if (this.numeroReservationFourni == "") {
       // Si aucun numero de reservation fourni
-      this.messageErreurNumeroVide = "ERROR. No reservation number provided. type a reservation number.";
-
+      this.messageErreurNumeroReservationVide =
+        "ERROR. No reservation number provided. type a reservation number.";
+      
     } else {
       /* Si un numero de reservation est fourni.
       Si reservation recherchée absente, on obtient un objet vide */
@@ -82,17 +86,34 @@ export class PaymentComponent {
 
 
   effectuerPaiement(){
-    // A FAIRE
+
+    this.resetErrorSuccesMessages();
+
+    if (this.objetReservationAffichage == undefined) {
+      this.messageErreurPaiement =
+        "ERROR. No reservation loaded. Type a reservation number and click the check status button above.";
+    
+    } else if(this.objetReservationAffichage.isTicketPaid == true){
+      this.messageErreurPaiement =
+        "ERROR. Payment is already completed for " + this.numeroReservationFourni;
+      
+    } else {
+      ReservationService.effectuerPaiementTicket(this.numeroReservationFourni);
+      this.messageSuccesPaiement = "Payment accepted. Your ticket is now available.";
+    }
   }
 
 
   resetReservationDetailsDisplay(){
-    this.messageErreurNumeroVide = "";
+    this.objetReservationAffichage = undefined;
+  }
+
+
+  resetErrorSuccesMessages(){
+    this.messageErreurNumeroReservationVide = "";
     this.messageErreurPaiement = "";
     this.messageErreurRecherche = "";
     this.messageSuccesPaiement = "";
     this.messageSuccesRecherche = "";
-    this.newTicketNumber = "";
-    this.objetReservationAffichage = undefined;
   }
 }

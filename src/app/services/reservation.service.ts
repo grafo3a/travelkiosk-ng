@@ -14,9 +14,11 @@ export class ReservationService {
   constructor() {}
 
 
+  /** Ajout d'une reservation sur la liste */
   public static ajouterReservation(objetReservation: ReservationModel){
     this.listeReservations.push(objetReservation);
   }
+
 
   /** Recherche d'un objet reservation sur base d'un numero de reservation fourni */
   public static getReservationFromList(numeroReservationFourni: string): ReservationModel {
@@ -34,6 +36,28 @@ export class ReservationService {
   }
 
 
+  /** Paiement sur base d'un numero de reservation */
+  public static effectuerPaiementTicket(numeroReservationFourni: string) {
+
+    const nombreReservations = ReservationService.listeReservations.length;
+    let i = 0;
+
+    while (i < nombreReservations) {
+      let reservationActuelle: ReservationModel = ReservationService.listeReservations[i];
+
+      if (reservationActuelle.numeroReservation == numeroReservationFourni){
+        //La reservation actuelle est la bonne
+
+        ReservationService.listeReservations[i].isTicketPaid = true;
+        i = nombreReservations;
+      }
+
+      i++;
+    }
+  }
+
+
+  /** Obtention d'une liste de reservations */
   public static getNombreToutesReservations(): number {
     
     const nombreElements = ReservationService.listeReservations.length;

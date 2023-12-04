@@ -35,7 +35,7 @@ export class ReservationComponent {
   newReservationNumber = "";
   isTicketPaid = false;
   prefixeTicket = "TICKET_PAX_";
-  travelClass = "ECONOMY";
+  travelClass = "Economy";
   
   
   constructor(
