@@ -65,8 +65,13 @@ export class TicketComponent {
       // Verif si l'objet est vide (ici numeroReservation sera en majuscules)
       if (numeroReservationPresent == this.numeroReservationFourni) {
 
-        this.messageSuccesRecherche = "Reservation found : " + objetReservationPresent.numeroReservation;
-        this.objetReservationAffichage = objetReservationPresent;
+        if (objetReservationPresent.isTicketPaid == false) {
+          this.messageErreurRecherche = "ERROR. Reservation found but payment not yet completed.";
+
+        } else {
+          this.messageSuccesRecherche = "Reservation found : " + objetReservationPresent.numeroReservation;
+          this.objetReservationAffichage = objetReservationPresent;
+        }
 
       } else {
           this.messageErreurRecherche = "ERROR. No reservation found for " +
