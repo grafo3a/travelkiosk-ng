@@ -1,0 +1,52 @@
+/* -------------------------------------- */
+.large300px {
+    width:300px;
+    border-radius: 5px;
+}
+
+
+.titre-page {
+    color: darkOrange;
+}
+
+
+.zone-verif-reservation {
+    margin-left: 0px;
+    padding-left: 0px;
+    border: 1px solid lightgrey;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgb(245, 245, 245);
+}
+
+
+.zone-input-reservation {
+    min-width: 320px;
+    padding-bottom: 5px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    background-color: rgb(245, 245, 245);
+}
+
+
+.zone-paiement {
+    margin-left: 0px;
+    padding-left: 0px;
+    text-align: left;
+}
+
+
+.btn-orangeatre {
+    background-color: rgb(255, 180, 120);    /* orangeatre */;
+    color: blue;
+}
+
+
+.btn-orange:hover {
+    background-color: orange;
+}
+
+
+.gauche0px {
+    padding-left: 0px;
+}

@@ -1,2 +1,166 @@
-<p>ticket works!</p>
-<p class="bg-warning">This component is under construction</p>
+<!--=== Ligne 1 ===-->
+<div class="row">
+
+    <!--=== Le titre de la page ====-->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+        <div class="h2 titre-page">Preview your ticket</div>
+    </div>
+    
+    <!--=== L'image du centre ===-->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-end p-0">
+        <app-photo-centre></app-photo-centre>
+    </div>
+</div>
+
+
+<!--=== Ligne 2 ===-->
+<div class="row mt-4 p-0">
+
+     <!--=== Zone 2A ===-->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-center">
+
+        <!-- Cet autre div permet d'obtenir une largeur < 100% -->
+        <div class="zone-input-reservation">
+
+            <div class="pt-1 pb-3 text-center">Type your reservation number</div>
+
+            <!-- Input box pour le numero de vol fourni -->
+            <input type="text" class="form-control-sm border border-secondary large300px"
+                    id="inputNumeroVol" placeholder="Reservation number"
+                    (change)="onReservationNumberChange($event.target)" />
+        </div>
+    </div>
+    
+    <!--=== Zone 2B ===-->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-verif-reservation">
+
+        <div class="p-2"><br/></div>
+
+        <!-- Bouton verif statut d'une reservation -->
+        <button class="btn btn-primary large300px"
+                    (click)="verifierStatutReservation()">Preview</button>
+     </div>
+</div>
+
+
+<!--=== Ligne 3 ===-->
+<!-- Messages d'erreur & messages de succes -->
+<div class="row">
+    
+    <!-- Une zone vide -->
+    <div class="col-xs-0 col-sm-0 col-md-6 col-lg-6"></div>
+    
+    <!-- La zone des messages -->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-2 gauche0px">
+        <span class="text-danger"><i>{{ messageErreurNumeroReservationVide }}</i></span>
+        <span class="text-danger"><i>{{ messageErreurRecherche }}</i></span>
+        <span class="text-success"><i>{{ messageSuccesRecherche }}</i></span>
+    </div>
+</div>
+
+
+<!--=== Ligne 4 ===-->
+<div class="row mt-4 p-0">
+    
+    <!-- Zone 4A -->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-start">
+    
+        <table class="table table-sm table-striped table-bordered-sm bg-light">
+            <tbody>
+                <tr>
+                    <td><i>Reservation number</i></td>
+                    <td>{{ objetReservationAffichage?.numeroReservation }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Name</i></td>
+                    <td>{{ objetReservationAffichage?.paxName }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Surname</i></td>
+                    <td>{{ objetReservationAffichage?.paxSurname }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Moment</i></td>
+                    <td>{{ objetReservationAffichage?.dateVol }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Flight number</i></td>
+                    <td>{{ objetReservationAffichage?.flightNumber }}</td>
+                </tr>
+
+
+                <tr>
+                    <td><i>Company</i></td>
+                    <td>{{ objetReservationAffichage?.company }}</td>
+                </tr>
+
+
+                <tr>
+                    <td><i>Direction</i></td>
+                    <td>{{ objetReservationAffichage?.direction }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>City</i></td>
+                    <td>{{ objetReservationAffichage?.city }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Country</i></td>
+                    <td>{{ objetReservationAffichage?.country }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Fare</i></td>
+                    <td>{{ objetReservationAffichage?.fare }}</td>
+                </tr>
+
+
+                <tr>
+                    <td><i>Payment received</i></td>
+                    <td>
+                        <span class="text-danger" *ngIf="objetReservationAffichage?.isTicketPaid == false">
+                            {{ objetReservationAffichage?.isTicketPaid }}
+                        </span>
+                        <span class="text-success" *ngIf="objetReservationAffichage?.isTicketPaid == true">
+                            <b>{{ objetReservationAffichage?.isTicketPaid }}</b>
+                        </span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td><i>Travel class</i></td>
+                    <td>{{ objetReservationAffichage?.travelClass }}</td>
+                </tr>
+
+
+                <tr>
+                    <td><i>Email address</i></td>
+                    <td>{{ objetReservationAffichage?.paxEmailAddress }}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Zone 4B -->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-paiement">
+
+        <div class="mb-0">
+            <button class="btn large300px btn-orangeatre"
+                    (click)="envoyerTicketViaEmail()">Send by email</button>
+        </div>
+
+        <div class="mt-2"><i>
+            <span class="text-danger">{{ messageErreurAffichageTicket }}</span>
+            <span class="text-success">{{ messageSuccesAffichageTicket }}</span></i>
+        </div>
+    </div>
+</div>
+
+<p class="bg-warning p-2">This component is under construction</p>
