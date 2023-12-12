@@ -36,6 +36,13 @@
 }
 
 
+.ticket-preview {
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 2px;
+}
+
+
 .btn-orangeatre {
     background-color: rgb(255, 180, 120);    /* orangeatre */;
     color: blue;
