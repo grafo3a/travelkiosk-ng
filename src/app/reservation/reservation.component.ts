@@ -148,7 +148,7 @@ export class ReservationComponent {
             // En cas d'erreur
 
             this.messageStatut = "STATUS: No response received.";
-            this.messageErreurDetails = VolsService.error_message;
+            this.messageErreurDetails = VolsService.errorMessage;
 
           } else {
           // En cas de succes
@@ -245,7 +245,7 @@ export class ReservationComponent {
     this.messageStatut = "";
     this.fareCost = "";
     this.newReservationNumber = "";
-    VolsService.error_message = "";
+    VolsService.errorMessage = "";
   }
 
 
