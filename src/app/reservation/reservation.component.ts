@@ -16,18 +16,18 @@ import { ReservationModel } from '../models/reservation.model';
 })
 export class ReservationComponent {
 
-  listeVols_dispo: IVol[] | undefined;
+  listeVolsDispo: IVol[] | undefined;
   objetVol: IVol | undefined;
 
-  date_yyyy_mm_dd = "None";    // La valeur du datepicker
-  url_base_serveur = "http://localhost:8080/flischeklowa/vols-rest/json/";
-  url_demo_pl = "../../assets/demo_vols_pl.json";
-  url_demo_de = "../../assets/demo_vols_de.json";
+  dateYyyyMmDd = "None";    // La valeur du datepicker
+  urlBaseServeur = "http://localhost:8080/flischeklowa/vols-rest/json/";
+  urlDemoPL = "../../assets/demo_vols_pl.json";
+  urlDemoDE = "../../assets/demo_vols_de.json";
   messageErreurDetails = "";
   messageErreurInfoVide = "";
   messageStatut = "";
-  message_erreur_reservation = "";
-  message_succes_reservation = "";
+  messageErreurReservation = "";
+  messageSuccesReservation = "";
   numeroVol = "None";
   paxName = "";
   paxSurname = "";
@@ -43,7 +43,6 @@ export class ReservationComponent {
     // On cree une instance pour chaque service qu'on va utiliser
     private serviceVols: VolsService,
     private serviceMenus: MenusService,
-    
     private serviceReservation: ReservationService,
 
     // Pour le datepicker
@@ -81,7 +80,7 @@ export class ReservationComponent {
       day_string = "0" + day;
     }
 
-    this.date_yyyy_mm_dd = year + "-" + month_string + "-" + day_string;
+    this.dateYyyyMmDd = year + "-" + month_string + "-" + day_string;
     
     this.resetInputZoneMessages();
     this.resetFlightDetailsDisplay();
@@ -111,22 +110,22 @@ export class ReservationComponent {
     this.resetPaxZoneMessages();
 
     // Un tableau d'objets JSon est attendu
-    let url_date = this.url_base_serveur + this.date_yyyy_mm_dd;
+    let url_date = this.urlBaseServeur + this.dateYyyyMmDd;
     let url_numeroVol = url_date + "/" + this.numeroVol.toLowerCase();
     
     // Cas de vols demo
     if (this.numeroVol == "DEM01"|| this.numeroVol == "DEM02" ||
         this.numeroVol == "DEM03" || this.numeroVol == "DEM04") {
 
-      url_numeroVol = this.url_demo_pl;
+      url_numeroVol = this.urlDemoPL;
 
     } else if (this.numeroVol == "DEM05"|| this.numeroVol == "DEM06" ||
                 this.numeroVol == "DEM13" || this.numeroVol == "DEM14") {
       
-      url_numeroVol = this.url_demo_de;
+      url_numeroVol = this.urlDemoDE;
     }
     
-    if (this.date_yyyy_mm_dd.toUpperCase() == "NONE") {
+    if (this.dateYyyyMmDd.toUpperCase() == "NONE") {
       // Si date non choisie
       this.messageErreurInfoVide = "ERROR: no date chosen. Pick a date.";
 
@@ -140,12 +139,12 @@ export class ReservationComponent {
       
       // On effectue la requete HTTP pour obtenir un tableau de IVol
       this.serviceVols.getFlights(url_numeroVol).subscribe(
-        (data: IVol[]) => this.listeVols_dispo = data);
+        (data: IVol[]) => this.listeVolsDispo = data);
 
       // Apres 3 secondes, on verifie les donnees (timeout version rxjs)
       timer(3000).subscribe(
         x => {
-          if (this.listeVols_dispo == undefined) {
+          if (this.listeVolsDispo == undefined) {
             // En cas d'erreur
 
             this.messageStatut = "STATUS: No response received.";
@@ -154,7 +153,7 @@ export class ReservationComponent {
           } else {
           // En cas de succes
 
-            const nombre_vols = this.listeVols_dispo.length;
+            const nombre_vols = this.listeVolsDispo.length;
             this.messageStatut = "STATUS: Success";
 
             let vol: IVol | undefined;
@@ -162,7 +161,7 @@ export class ReservationComponent {
             
             while (i < nombre_vols) {
               
-              vol = this.listeVols_dispo[i];
+              vol = this.listeVolsDispo[i];
               
               if (vol.numeroVol == this.numeroVol){
                 this.objetVol = vol;
@@ -192,20 +191,20 @@ export class ReservationComponent {
 
     if (this.objetVol == undefined) {
       // Si aucun objet vol present
-      this.message_erreur_reservation = "ERROR: No flight found." +
+      this.messageErreurReservation = "ERROR: No flight found." +
         "Choose a date, type a flight number & click the display details button above.";
     
     } else if(this.paxName == ""){
       // Si prenom du passager vide
-      this.message_erreur_reservation = "ERROR: No name provided. Type a name.";
+      this.messageErreurReservation = "ERROR: No name provided. Type a name.";
     
     } else if(this.paxSurname == ""){
       // Si nom du passager vide
-      this.message_erreur_reservation = "ERROR: No surname provided. Type a surname.";
+      this.messageErreurReservation = "ERROR: No surname provided. Type a surname.";
     
     } else if(this.paxEmailAddress == ""){
       // Si adresse courriel vide
-      this.message_erreur_reservation = "ERROR: No email address provided. Type an address.";
+      this.messageErreurReservation = "ERROR: No email address provided. Type an address.";
 
     } else {
       // Si toutes les infos dispo, on effectue la reservation
@@ -231,7 +230,7 @@ export class ReservationComponent {
 
       ReservationService.ajouterReservation(newReservationObject);
       
-      this.message_succes_reservation = "Success. Your reservation number is:";
+      this.messageSuccesReservation = "Success. Your reservation number is:";
       this.newReservationNumber = nouveauNumeroReservation;
     }
   }
@@ -240,7 +239,7 @@ export class ReservationComponent {
   resetFlightDetailsDisplay(){
     //Reinitialisation de variables
 
-    this.listeVols_dispo = undefined;
+    this.listeVolsDispo = undefined;
     this.objetVol = undefined;
     this.messageErreurDetails = "";
     this.messageStatut = "";
@@ -285,8 +284,8 @@ export class ReservationComponent {
 
   resetPaxZoneMessages(){
     
-    this.message_erreur_reservation = "";
-    this.message_succes_reservation = "";
+    this.messageErreurReservation = "";
+    this.messageSuccesReservation = "";
     this.newReservationNumber = "";
   }
 }

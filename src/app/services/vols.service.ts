@@ -9,7 +9,7 @@ import { IVol } from '../models/ivol.model';
 })
 export class VolsService {
 
-  static error_message = "";
+  static errorMessage = "";
 
 
   constructor(private http:HttpClient) {}
@@ -24,7 +24,7 @@ export class VolsService {
   handleError(error: HttpErrorResponse) {
 
     let error_text = "An ERROR occurred (Name: " + error.name + ". Message: " + error.message + ")";
-    VolsService.error_message = error_text;
+    VolsService.errorMessage = error_text;
 
     return throwError(() => new Error(error_text));
   }

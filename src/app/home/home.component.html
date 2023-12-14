@@ -57,11 +57,11 @@
         <table>
             <tr>
                 <td class="clef-selection">Selected Date :</td>
-                <td class="valeur-selection">{{ date_yyyy_mm_dd }}</td>
+                <td class="valeur-selection">{{ dateYyyyMmDd }}</td>
             </tr>
             <tr>
                 <td class="clef-selection">Selected Category :</td>
-                <td class="valeur-selection">{{ code_pays }}</td>
+                <td class="valeur-selection">{{ codePays }}</td>
             </tr>
         </table>
     </div>
@@ -83,10 +83,10 @@
         <div *ngIf="messageWarningCasDemo != ''" class="text-orange text-end">
             <i>{{ messageWarningCasDemo }}</i></div>
 
-        <i>{{ message_statut }}</i>
+        <i>{{ messageStatut }}</i>
         
-        <div *ngIf="message_erreur != ''" class="text-danger">
-            <i>{{ message_erreur }}</i>
+        <div *ngIf="messageErreur != ''" class="text-danger">
+            <i>{{ messageErreur }}</i>
         </div>
     </div>
 </div>
@@ -108,7 +108,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let vol of listeVols_dispo">
+            <tr *ngFor="let vol of listeVolsDispo">
                 <td>{{vol.dateHeure}}</td>
                 <td>{{vol.sens}}</td>
                 <td>{{vol.ville}}</td>

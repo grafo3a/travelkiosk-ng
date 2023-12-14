@@ -11,10 +11,10 @@ import { Observable } from 'rxjs';
 export class PrevisionMeteoChService implements IweatherreportService {
 
   // Coordonnees gps de Geneve (pour demo)
-  url_meteo = "https://www.prevision-meteo.ch/services/json/lat=46.2lng=6.1667";
+  urlMeteo = "https://www.prevision-meteo.ch/services/json/lat=46.2lng=6.1667";
   dataModel: IweatherdataModel | undefined;
 
-
+  
   // On cree une instance pour chaque service qu'on va utiliser
   constructor(private http : HttpClient) {}
 
@@ -29,6 +29,6 @@ export class PrevisionMeteoChService implements IweatherreportService {
   
   
   getWeatherData(): Observable<IweatherdataModel> {
-    return this.http.get<IweatherdataModel>(this.url_meteo);
+    return this.http.get<IweatherdataModel>(this.urlMeteo);
   }
 }

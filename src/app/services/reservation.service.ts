@@ -11,7 +11,7 @@ export class ReservationService {
   private static listeReservations: ReservationModel[] = [];
   private static readonly prefixeTicket = "TICKET_PAX_";
 
-
+  
   constructor() {}
 
 
