@@ -19,7 +19,7 @@ export class PaymentComponent {
   messageSuccesPaiement = "";
   messageErreurRecherche = "";
   messageSuccesRecherche = "";
-  prefixeTicket = "TICKET_PAX";
+  prefixeTicket = ReservationService.getPrefixeTicket();
 
 
   constructor(

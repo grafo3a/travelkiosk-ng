@@ -35,7 +35,7 @@ export class ReservationComponent {
   fareCost = "";
   newReservationNumber = "";
   isTicketPaid = false;
-  prefixeTicket = "TICKET_PAX_";
+  prefixeTicket = ReservationService.getPrefixeTicket();
   travelClass = "Economy";
   
   

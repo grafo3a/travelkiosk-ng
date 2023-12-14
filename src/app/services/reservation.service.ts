@@ -8,9 +8,10 @@ import { ReservationModel } from '../models/reservation.model';
 export class ReservationService {
 
   // Un tableau de IReservation (vide)
-  static listeReservations: ReservationModel[] = [];
+  private static listeReservations: ReservationModel[] = [];
+  private static readonly prefixeTicket = "TICKET_PAX_";
 
-  
+
   constructor() {}
 
 
@@ -62,5 +63,11 @@ export class ReservationService {
     
     const nombreElements = ReservationService.listeReservations.length;
     return nombreElements;
+  }
+
+
+  /** Accesseur pour prefixeTicket */
+  public static getPrefixeTicket(): string {
+    return this.prefixeTicket;
   }
 }
