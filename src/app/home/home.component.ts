@@ -71,15 +71,8 @@ export class HomeComponent implements OnInit {
 
     this.dateYyyyMmDd = year + "-" + month_string + "-" + day_string;
     this.resetFlightsListDisplay();
-
-    /*
-    if (this.codePays.endsWith("DEMO")) {
-      this.messageWarningDateVide =
-        "Warning: all demo cases display flights with the same date: 2050-01-01.";      
-    }
-    */
   }
-
+  
   
   onFlightsCategorySelectionChange(event: any){
     this.resetFlightsListDisplay();
