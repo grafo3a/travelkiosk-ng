@@ -60,10 +60,10 @@
 
 
 <!--=== Ligne 4 (L'affichage d'un ticket) ===-->
-<div class="row mt-4 p-0 ticket-preview">
+<div class="row ticket-preview p-2">
     
     <!-- Zone 4A -->
-    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-start">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-paiement">
     
         <table class="table table-sm table-bordered-sm">
             <tbody>
@@ -73,40 +73,19 @@
                 </tr>
 
                 <tr>
-                    <td><i>Name</i></td>
-                    <td>{{ objetReservationAffichage?.paxName }}</td>
-                </tr>
-
-                <tr>
-                    <td><i>Surname</i></td>
-                    <td>{{ objetReservationAffichage?.paxSurname }}</td>
-                </tr>
-
-                <tr>
                     <td><i>Moment</i></td>
                     <td>{{ objetReservationAffichage?.dateVol }}</td>
                 </tr>
 
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Zone 4B -->
-    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-paiement">
-
-        <table class="table table-sm table-bordered-sm">
-            <tbody>
                 <tr>
                     <td><i>Flight number</i></td>
                     <td>{{ objetReservationAffichage?.flightNumber }}</td>
                 </tr>
 
-
                 <tr>
                     <td><i>Company</i></td>
                     <td>{{ objetReservationAffichage?.company }}</td>
                 </tr>
-
 
                 <tr>
                     <td><i>Direction</i></td>
@@ -122,12 +101,39 @@
                     <td><i>Country</i></td>
                     <td>{{ objetReservationAffichage?.country }}</td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Zone 4B -->
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-paiement">
+
+        <table class="table table-sm table-bordered-sm">
+            <tbody>
+                <tr>
+                    <td><i>Name</i></td>
+                    <td>{{ objetReservationAffichage?.paxName }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Surname</i></td>
+                    <td>{{ objetReservationAffichage?.paxSurname }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Email address</i></td>
+                    <td>{{ objetReservationAffichage?.paxEmailAddress }}</td>
+                </tr>
+
+                <tr>
+                    <td><i>Travel class</i></td>
+                    <td>{{ objetReservationAffichage?.travelClass }}</td>
+                </tr>
 
                 <tr>
                     <td><i>Fare</i></td>
                     <td>{{ objetReservationAffichage?.fare }}</td>
                 </tr>
-
 
                 <tr>
                     <td><i>Payment received</i></td>
@@ -139,18 +145,6 @@
                             <b>{{ objetReservationAffichage?.isTicketPaid }}</b>
                         </span>
                     </td>
-                </tr>
-
-
-                <tr>
-                    <td><i>Travel class</i></td>
-                    <td>{{ objetReservationAffichage?.travelClass }}</td>
-                </tr>
-
-
-                <tr>
-                    <td><i>Email address</i></td>
-                    <td>{{ objetReservationAffichage?.paxEmailAddress }}</td>
                 </tr>
             </tbody>
         </table>
