@@ -49,6 +49,12 @@
 }
 
 
+.preview-table {
+    border-left: 2px solid rgb(180, 220, 255);    /* bleu faible */
+    padding-left: 10px;
+}
+
+
 .btn-orangeatre {
     background-color: rgb(255, 180, 120);    /* orangeatre */;
     color: blue;
