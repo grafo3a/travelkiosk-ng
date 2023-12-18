@@ -39,8 +39,12 @@
 .ticket-preview {
     margin-left: 0px;
     margin-right: 0px;
+    border: 1px solid grey;
     border-radius: 2px;
-    box-shadow: 1px 1px white, 4px 4px orange;
+    box-shadow: 1px 1px white, 2px 2px grey,
+                3px 3px white, 4px 4px grey,
+                5px 5px white, 6px 6px grey;    /* les couches d'ombres */
+    background-color: rgb(240, 250, 255);    /* bleu faible */
 }
 
 

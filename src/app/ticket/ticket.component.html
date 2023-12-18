@@ -60,7 +60,7 @@
 
 
 <!--=== Ligne 4 (L'affichage d'un ticket) ===-->
-<div class="row mt-4 p-0 border border-secondary bg-light ticket-preview">
+<div class="row mt-4 p-0 ticket-preview">
     
     <!-- Zone 4A -->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-start">
@@ -68,7 +68,7 @@
         <table class="table table-sm table-bordered-sm">
             <tbody>
                 <tr>
-                    <td><i>Reservation number</i></td>
+                    <td><i>Ticket number</i></td>
                     <td>{{ objetReservationAffichage?.numeroReservation }}</td>
                 </tr>
 
@@ -158,11 +158,14 @@
 </div>
 
 
-<!--=== Ligne 5 ===-->
+<!--=== Ligne 5 (Le bouton Send by Email) ===-->
 <div class="row">
+
+    <!-- une zone vide -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
-    
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-2 zone-paiement">
+
+    <!-- Le bouton -->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4 zone-paiement">
         <div class="mb-0">
             <button class="btn large300px btn-orangeatre"
                     (click)="envoyerTicketViaEmail()">Send by email</button>
