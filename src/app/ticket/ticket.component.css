@@ -29,13 +29,6 @@
 }
 
 
-.zone-paiement {
-    margin-left: 0px;
-    padding-left: 0px;
-    text-align: left;
-}
-
-
 .ticket-preview {
     margin-top: 20px;
     margin-left: 0px;
@@ -67,5 +60,6 @@
 
 
 .gauche0px {
+    margin-left: 0px;
     padding-left: 0px;
 }
