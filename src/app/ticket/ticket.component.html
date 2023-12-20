@@ -1,12 +1,12 @@
 <!--=== Ligne 1 ===-->
 <div class="row">
 
-    <!--=== Le titre de la page ====-->
+    <!-- Le titre de la page -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
         <div class="h2 titre-page">Preview your ticket</div>
     </div>
     
-    <!--=== L'image du centre ===-->
+    <!-- L'image du centre -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-end p-0">
         <app-photo-centre></app-photo-centre>
     </div>
@@ -44,13 +44,12 @@
 
 
 <!--=== Ligne 3 ===-->
-<!-- Messages d'erreur & messages de succes -->
 <div class="row">
     
     <!-- Une zone vide -->
     <div class="col-xs-0 col-sm-0 col-md-6 col-lg-6"></div>
-    
-    <!-- La zone des messages -->
+
+    <!-- Messages d'erreur & messages de succes -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-2 gauche0px">
         <span class="text-danger"><i>{{ messageErreurNumeroReservationVide }}</i></span>
         <span class="text-danger"><i>{{ messageErreurRecherche }}</i></span>
@@ -62,7 +61,7 @@
 <!--=== Ligne 4 (L'affichage d'un ticket) ===-->
 <div class="row ticket-preview p-2">
     
-    <!-- Zone 4A -->
+    <!-- Zone 4A (La table preview affichée à gauche ou en haut) -->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 preview-table">
     
         <table class="table table-sm table-bordered-sm">
@@ -105,7 +104,7 @@
         </table>
     </div>
 
-    <!-- Zone 4B -->
+    <!-- Zone 4B (La table preview affichée à droite ou en bas) -->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 preview-table">
 
         <table class="table table-sm table-bordered-sm">
@@ -155,16 +154,17 @@
 <!--=== Ligne 5 (Le bouton Send by Email) ===-->
 <div class="row">
 
-    <!-- une zone vide -->
+    <!-- Une zone vide -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
-    
-    <!-- Le bouton -->
+
+    <!-- La zone du bouton -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4 gauche0px">
         <div class="mb-0">
             <button class="btn large300px btn-orangeatre"
                     (click)="envoyerTicketViaEmail()">Send by email</button>
         </div>
 
+        <!-- Messages d'erreur & messages de succes -->
         <div class="mt-2"><i>
             <span class="text-danger">{{ messageErreurAffichageTicket }}</span>
             <span class="text-success">{{ messageSuccesAffichageTicket }}</span></i>
