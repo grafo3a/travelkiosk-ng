@@ -1,20 +1,22 @@
+<!--=== Ligne 1 ===-->
 <div class="row">
 
-    <!--=== Le titre de la page ====-->
+    <!-- Le titre de la page -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
         <div class="h2 titre-page">Reserve a flight</div>
     </div>
     
-    <!--=== L'image du centre ===-->
+    <!-- L'image du centre -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-end p-0">
         <app-photo-centre></app-photo-centre>
     </div>
 </div>
 
 
+<!--=== Ligne 2 ===-->
 <div class="row zone-selections mt-4 pt-2 pb-4">
 
-    <!--=== La zone du datepicker ===-->
+    <!-- La zone du datepicker -->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 text-center">
 
         <!-- Le datepicker -->
@@ -32,7 +34,7 @@
         </mat-form-field>
     </div>
 
-    <!--=== L'espace de l'input box ===-->
+    <!-- L'espace de l'input box -->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 zone-choix-numero-vol gauche0px">
 
         <div class="large300px text-center">Type a Flight Number</div><br/>
@@ -43,7 +45,7 @@
                 (change)="onFlightNumberChange($event.target)" />
     </div>
 
-    <!--=== La zone d'affichage des valeurs choisies ===-->
+    <!-- La zone d'affichage des valeurs choisies -->
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 mt-4 d-flex justify-content-center">
 
         <table>
@@ -63,7 +65,7 @@
             (click)="afficher1Vol()">Display details</button>
     </div>
 
-    <!--=== Message de statut & message d'erreur ===-->
+    <!-- Message de statut & message d'erreur -->
     <div class="row">
         <!-- Une zone vide -->
         <div class="col-xs-0 col-sm-0 col-md-6 col-lg-6"></div>
@@ -78,6 +80,7 @@
 </div>
 
 
+<!--=== Ligne 3 ===-->
 <div class="row mt-4 table-details-vol p-0">
 
     <h3 class="text-center">DETAILS OF THE FLIGHT</h3>
