@@ -1,5 +1,12 @@
 # TravelkioskNg
 
+## Presentation
+TravelKiosk is an online air ticket shop.
+With this app you can search and find flights, make a reservation, pay for it and check your ticket.
+The app is essentially a front-end client for the web API of the app "FlischeKlowa".
+The author of the project is the programmer Joseph B. Apasa.
+
+## Technical aspects
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
 
 ## Development server
