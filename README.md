@@ -36,3 +36,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Screenshots
 
 ![travelkioskng_screenshot_01.PNG](/src/assets/images/travelkioskng_screenshot_01.PNG?raw=true)
+
+![travelkioskng_screenshot_02.PNG](/src/assets/images/travelkioskng_screenshot_02.PNG?raw=true)
+
+![travelkioskng_screenshot_03.PNG](/src/assets/images/travelkioskng_screenshot_03.PNG?raw=true)
+
+![travelkioskng_screenshot_04.PNG](/src/assets/images/travelkioskng_screenshot_04.PNG?raw=true)
+
+![travelkioskng_screenshot_05.PNG](/src/assets/images/travelkioskng_screenshot_05.PNG?raw=true)
